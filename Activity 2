@@ -1,0 +1,34 @@
+import java.io.*;
+
+public class App {
+    public static void main(String[] args) throws IOException {
+        // Declare a BufferedReader object to read from the file
+        BufferedReader reader = null;
+        
+        try {
+            // Initialize the BufferedReader object to read from the file
+            reader = new BufferedReader(new FileReader("dummy.txt"));
+
+            // Read and display the first 5 lines of the file
+            for (int i = 0; i < 5; i++) {
+                String line = reader.readLine();
+                System.out.println(line);
+            }
+        } 
+        catch (IOException e) {
+            // Print an error message if there is a problem reading the file
+            System.out.println("Error reading file: " + e.getMessage());
+        } 
+        finally {
+            // Close the BufferedReader object to release system resources
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                // Print an error message if there is a problem closing the file
+                System.out.println("Error closing file: " + e.getMessage());
+            }
+        }
+    }
+}
