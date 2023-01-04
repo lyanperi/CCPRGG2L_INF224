@@ -1,0 +1,38 @@
+import java.io.*;
+
+public class App {
+  public static void main(String[] args) throws IOException {
+    // Open the input file for reading
+    BufferedReader reader = new BufferedReader(new FileReader("data.txt"));
+
+    // Initialize the result variable
+    int result = 0;
+
+    // Read the data from the file line by line
+    String line = reader.readLine();
+    while (line != null) {
+      // Split the line into individual values
+      String[] values = line.split(",");
+
+      // Add the values and update the result
+      for (String value : values) {
+        result += Integer.parseInt(value);
+      }
+
+      // Read the next line
+      line = reader.readLine();
+    }
+
+    // Close the input file
+    reader.close();
+
+    // Open the output file for writing
+    BufferedWriter writer = new BufferedWriter(new FileWriter("sum.txt"));
+
+    // Write the result to the file
+    writer.write(String.valueOf(result));
+
+    // Close the output file
+    writer.close();
+  }
+}
